@@ -1,6 +1,6 @@
 {
-  "name": "gh-token",
-  "description": "gh-token",
+  "name": "@forbital/github-token",
+  "description": "Obtain GitHub Token from various location.",
   "version": "0.0.0",
   "author": "Yasuaki Uechi <y@uechi.io> (https://uechi.io)",
   "scripts": {
@@ -29,16 +29,19 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/uetchy/gh-token.git"
+    "url": "https://github.com/forbital/github-token.git"
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/uetchy/gh-token/issues"
+    "url": "https://github.com/forbital/github-token/issues"
   },
-  "homepage": "https://github.com/uetchy/gh-token",
+  "homepage": "https://github.com/forbital/github-token",
   "keywords": [
-    "gh-token"
+    "github-token"
   ]
 }

@@ -1,4 +1,4 @@
-# gh-token
+# @forbital/github-token
 
 [![npm-version]][npm-url]
 [![npm-downloads]][npm-url]
@@ -10,21 +10,21 @@
 3. `GH_TOKEN`
 4. `GITHUB_TOKEN`
 
-[npm-version]: https://badgen.net/npm/v/gh-token
-[npm-downloads]: https://badgen.net/npm/dt/gh-token
-[npm-url]: https://npmjs.org/package/gh-token
+[npm-version]: https://badgen.net/npm/v/@forbital/github-token
+[npm-downloads]: https://badgen.net/npm/dt/@forbital/github-token
+[npm-url]: https://npmjs.org/package/@forbital/github-token
 
 ## Installation
 
 ```bash
-yarn add gh-token
-# or npm i gh-token
+yarn add @forbital/github-token
+# or npm i @forbital/github-token
 ```
 
 ## Usage
 
 ```bash
-import getToken from 'gh-token';
+import getToken from '@forbital/github-token';
 
 const githubToken = getToken();
 ```
