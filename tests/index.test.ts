@@ -1,6 +1,6 @@
 import mock from 'mock-fs';
 
-import getGithubToken from '../src';
+import getGithubToken from '../src/github-token';
 import {homedir} from 'os';
 import {join} from 'path';
 

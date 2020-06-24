@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Yasuaki Uechi <y@uechi.io> (https://uechi.io)",
   "scripts": {
-    "build": "shx rm -rf dist && tsc",
+    "build": "shx rm -rf dist/* && tsc && shx chmod +x dist/cli.js",
     "dev": "tsc -w",
     "prepublish": "yarn build",
     "test": "jest"
@@ -24,8 +24,9 @@
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   },
-  "types": "dist/index.d.ts",
-  "main": "dist/index.js",
+  "types": "dist/github-token.d.ts",
+  "main": "dist/github-token.js",
+  "bin": "dist/cli.js",
   "files": [
     "dist"
   ],
@@ -36,12 +37,12 @@
     "type": "git",
     "url": "https://github.com/forbital/github-token.git"
   },
-  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/forbital/github-token/issues"
   },
   "homepage": "https://github.com/forbital/github-token",
   "keywords": [
     "github-token"
-  ]
+  ],
+  "license": "Apache-2.0"
 }

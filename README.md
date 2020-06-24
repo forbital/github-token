@@ -14,16 +14,32 @@
 [npm-downloads]: https://badgen.net/npm/dt/@forbital/github-token
 [npm-url]: https://npmjs.org/package/@forbital/github-token
 
-## Installation
+## Install
 
 ```bash
 yarn add @forbital/github-token
 # or npm i @forbital/github-token
 ```
 
-## Usage
+## Use
+
+### CLI
 
 ```bash
+eval $(github-token)
+```
+
+#### direnv
+
+```bash
+# .direnv
+dotenv
+eval $(github-token)
+```
+
+### Node.js
+
+```js
 import getToken from '@forbital/github-token';
 
 const githubToken = getToken();

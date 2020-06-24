@@ -40,3 +40,9 @@ export function fromEnv(): string | undefined {
 export default function getGithubToken() {
   return fromHubConfig() || fromGhConfig() || fromEnv();
 }
+
+export function envSetup(): string {
+  const token = getGithubToken();
+  return `export GITHUB_TOKEN=${token}
+export GH_TOKEN=${token}`;
+}
