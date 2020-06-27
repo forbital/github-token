@@ -32,15 +32,21 @@ echo $(github-token)
 or
 
 ```bash
-eval $(github-token --env)
+eval $(github-token --shell)
 echo $GITHUB_TOKEN
+```
+
+or
+
+```bash
+echo "$(github-token --env)" >> .env
 ```
 
 #### direnv
 
 ```bash
 # .envrc
-eval $(github-token --env)
+eval $(github-token --shell)
 ```
 
 ### Node.js

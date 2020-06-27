@@ -41,8 +41,11 @@ export default function getGithubToken() {
   return fromHubConfig() || fromGhConfig() || fromEnv();
 }
 
-export function setupEnv(): string {
+export function getEnv({ shell = false }: { shell?: boolean } = {}): string {
   const token = getGithubToken();
-  return `export GITHUB_TOKEN=${token}
-export GH_TOKEN=${token}`;
+
+  return ['GITHUB_TOKEN', 'GH_TOKEN']
+    .map((key) => key + '=' + token)
+    .map((line) => (shell ? 'export ' + line : line))
+    .join('\n');
 }
