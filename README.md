@@ -27,13 +27,13 @@ yarn add @forbital/github-token
 
 ```bash
 eval $(github-token)
+echo $GITHUB_TOKEN
 ```
 
 #### direnv
 
 ```bash
 # .direnv
-dotenv
 eval $(github-token)
 ```
 
