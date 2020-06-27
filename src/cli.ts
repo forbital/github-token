@@ -3,17 +3,17 @@
 import minimist from 'minimist';
 import getGithubToken, { setupEnv } from './github-token';
 
-const { token, help } = minimist(process.argv.slice(2), {
-  alias: { token: 't', help: 'h' },
-  default: { token: false, help: false },
+const { env, help } = minimist(process.argv.slice(2), {
+  alias: { env: 'e', help: 'h' },
+  default: { env: false, help: false },
 });
 
 if (help) {
   console.log(`github-token [options]
 
- --help,  -h   show help
- --token, -t   only print token`);
+ --help, -h   show help
+ --env,  -e   print shell code to setup env var`);
   process.exit(0);
 }
 
-console.log(token ? getGithubToken() : setupEnv());
+console.log(env ? setupEnv() : getGithubToken());

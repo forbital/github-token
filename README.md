@@ -26,7 +26,13 @@ yarn add @forbital/github-token
 ### CLI
 
 ```bash
-eval $(github-token)
+echo $(github-token)
+```
+
+or
+
+```bash
+eval $(github-token --env)
 echo $GITHUB_TOKEN
 ```
 
@@ -34,7 +40,7 @@ echo $GITHUB_TOKEN
 
 ```bash
 # .envrc
-eval $(github-token)
+eval $(github-token --env)
 ```
 
 ### Node.js
@@ -42,5 +48,9 @@ eval $(github-token)
 ```js
 import getToken from '@forbital/github-token';
 
-const githubToken = getToken();
+const user = await fetch('https://api.github.com/user', {
+  headers: { Authorization: `Bearer ${getToken()}` },
+}).then((res) => res.json());
+
+console.log(user.twitter_username);
 ```
