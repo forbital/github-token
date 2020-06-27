@@ -18,7 +18,7 @@
 
 ```bash
 yarn add @forbital/github-token
-# or npm i @forbital/github-token
+# or npm i --save @forbital/github-token
 ```
 
 ## Use
@@ -33,7 +33,7 @@ echo $GITHUB_TOKEN
 #### direnv
 
 ```bash
-# .direnv
+# .envrc
 eval $(github-token)
 ```
 
