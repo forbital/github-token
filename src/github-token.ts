@@ -1,5 +1,5 @@
-import {homedir} from 'os';
-import {join} from 'path';
+import { homedir } from 'os';
+import { join } from 'path';
 import * as yaml from 'js-yaml';
 import fs from 'fs';
 
@@ -41,7 +41,7 @@ export default function getGithubToken() {
   return fromHubConfig() || fromGhConfig() || fromEnv();
 }
 
-export function envSetup(): string {
+export function setupEnv(): string {
   const token = getGithubToken();
   return `export GITHUB_TOKEN=${token}
 export GH_TOKEN=${token}`;
