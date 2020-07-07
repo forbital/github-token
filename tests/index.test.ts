@@ -4,18 +4,32 @@ import getGithubToken from '../src/github-token';
 import { homedir } from 'os';
 import { join } from 'path';
 
-beforeEach(async () => {
+afterEach(async () => {
+  mock.restore();
+});
+
+it('fromHub', async () => {
   mock({
     [join(homedir(), '.config')]: {
       hub: `github.com:
 - user: uetchy
   oauth_token: 3ZJBAhMVjdFQvQNkb
   protocol: https`,
+    },
+  });
+
+  const token = await getGithubToken();
+  expect(token).toBe('3ZJBAhMVjdFQvQNkb');
+});
+
+it('fromGh', async () => {
+  mock({
+    [join(homedir(), '.config')]: {
       gh: {
         'config.yml': `{
   "hosts": {
     "github.com": {
-      "oauth_token": "3ZJBAhMVjdFQvQNkb",
+      "oauth_token": "ZfJTkxcfA5DZUbPBb",
       "user": "uetchy"
     }
   }
@@ -23,13 +37,18 @@ beforeEach(async () => {
       },
     },
   });
-});
 
-afterEach(async () => {
-  mock.restore();
-});
-
-it('getGithubToken', async () => {
   const token = await getGithubToken();
-  expect(token).toBe('3ZJBAhMVjdFQvQNkb');
+  expect(token).toBe('ZfJTkxcfA5DZUbPBb');
+});
+
+it('fromEnv', async () => {
+  mock({
+    [join(homedir(), '.config')]: {},
+  });
+
+  process.env.GITHUB_TOKEN = 'wY9KqC52TxF3N2SJZ';
+
+  const token = await getGithubToken();
+  expect(token).toBe('wY9KqC52TxF3N2SJZ');
 });
