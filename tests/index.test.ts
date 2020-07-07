@@ -1,8 +1,8 @@
 import mock from 'mock-fs';
 
 import getGithubToken from '../src/github-token';
-import {homedir} from 'os';
-import {join} from 'path';
+import { homedir } from 'os';
+import { join } from 'path';
 
 beforeEach(async () => {
   mock({
@@ -29,7 +29,7 @@ afterEach(async () => {
   mock.restore();
 });
 
-it('getGithubToken', () => {
-  const token = getGithubToken();
+it('getGithubToken', async () => {
+  const token = await getGithubToken();
   expect(token).toBe('3ZJBAhMVjdFQvQNkb');
 });

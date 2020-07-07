@@ -16,8 +16,8 @@ export function fromHubConfig(): string | undefined {
   const hubConfigPath = join(homedir(), '.config', 'hub');
   try {
     const configString = fs.readFileSync(hubConfigPath, 'utf8');
-    const hubConfig = yaml.safeLoad(configString);
-    const token = hubConfig['github.com']?.[0]?.['oauth_token'];
+    const hubConfig = yaml.safeLoad(configString) as any;
+    const token = hubConfig?.['github.com']?.[0]?.['oauth_token'];
     return token;
   } catch (err) {
     if (err.code === 'ENOENT') {
@@ -31,8 +31,8 @@ export function fromGhConfig(): string | undefined {
   const hubConfigPath = join(homedir(), '.config', 'gh', 'config.yml');
   try {
     const configString = fs.readFileSync(hubConfigPath, 'utf8');
-    const hubConfig = yaml.safeLoad(configString);
-    const token = hubConfig['hosts']?.['github.com']?.['oauth_token'];
+    const hubConfig = yaml.safeLoad(configString) as any;
+    const token = hubConfig?.['hosts']?.['github.com']?.['oauth_token'];
     return token;
   } catch (err) {
     if (err.code === 'ENOENT') {
