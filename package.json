@@ -6,25 +6,28 @@
   "scripts": {
     "build": "shx rm -rf dist/* && tsc && shx chmod +x dist/cli.js",
     "dev": "tsc -w",
-    "prepublish": "yarn build",
+    "prepublishOnly": "yarn build",
     "test": "jest"
   },
   "dependencies": {
     "js-yaml": "^3.14.0",
-    "minimist": "^1.2.5"
+    "keytar": "^6.0.1",
+    "minimist": "^1.2.5",
+    "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.0",
-    "@types/js-yaml": "^3.12.4",
+    "@types/jest": "^26.0.4",
+    "@types/js-yaml": "^3.12.5",
     "@types/minimist": "^1.2.0",
     "@types/mock-fs": "^4.10.0",
-    "@types/node": "^14.0.13",
-    "jest": "^26.0.1",
+    "@types/node": "^14.0.18",
+    "@types/prompt-sync": "^4.1.0",
+    "jest": "^26.1.0",
     "mock-fs": "^4.12.0",
     "shx": "^0.3.2",
     "ts-jest": "^26.1.1",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.6"
   },
   "types": "dist/github-token.d.ts",
   "main": "dist/github-token.js",
