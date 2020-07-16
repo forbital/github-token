@@ -7,10 +7,9 @@
 
 1. `~/.config/hub`
 2. `~/.config/gh/config.yml`
-3. System Keychain (macOS, Windows, Linux)
-4. `GH_TOKEN`
-5. `GITHUB_TOKEN`
-6. User inputs (if `--prompt, -p` given)
+3. `GH_TOKEN`
+4. `GITHUB_TOKEN`
+5. System Keychain (macOS, Windows, Linux)
 
 [npm-version]: https://badgen.net/npm/v/@forbital/github-token
 [npm-downloads]: https://badgen.net/npm/dt/@forbital/github-token
