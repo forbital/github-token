@@ -1,16 +1,16 @@
-import mock from 'mock-fs';
+import mock from "mock-fs";
 
-import getGithubToken from '../src/github-token';
-import { homedir } from 'os';
-import { join } from 'path';
+import getGithubToken, { fromEnv } from "../src/github-token";
+import { homedir } from "os";
+import { join } from "path";
 
 afterEach(async () => {
   mock.restore();
 });
 
-it('fromHub', async () => {
+it("fromHub", async () => {
   mock({
-    [join(homedir(), '.config')]: {
+    [join(homedir(), ".config")]: {
       hub: `github.com:
 - user: uetchy
   oauth_token: 3ZJBAhMVjdFQvQNkb
@@ -19,14 +19,14 @@ it('fromHub', async () => {
   });
 
   const token = await getGithubToken();
-  expect(token).toBe('3ZJBAhMVjdFQvQNkb');
+  expect(token).toBe("3ZJBAhMVjdFQvQNkb");
 });
 
-it('fromGh', async () => {
+it("fromGh", async () => {
   mock({
-    [join(homedir(), '.config')]: {
+    [join(homedir(), ".config")]: {
       gh: {
-        'config.yml': `{
+        "config.yml": `{
   "hosts": {
     "github.com": {
       "oauth_token": "ZfJTkxcfA5DZUbPBb",
@@ -39,16 +39,16 @@ it('fromGh', async () => {
   });
 
   const token = await getGithubToken();
-  expect(token).toBe('ZfJTkxcfA5DZUbPBb');
+  expect(token).toBe("ZfJTkxcfA5DZUbPBb");
 });
 
-it('fromEnv', async () => {
+it("fromEnv", () => {
   mock({
-    [join(homedir(), '.config')]: {},
+    [join(homedir(), ".config")]: {},
   });
 
-  process.env.GITHUB_TOKEN = 'wY9KqC52TxF3N2SJZ';
+  process.env.GITHUB_TOKEN = "wY9KqC52TxF3N2SJZ";
 
-  const token = await getGithubToken();
-  expect(token).toBe('wY9KqC52TxF3N2SJZ');
+  const token = fromEnv();
+  expect(token).toBe("wY9KqC52TxF3N2SJZ");
 });

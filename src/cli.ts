@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-import minimist from 'minimist';
-import getGithubToken, { getEnv } from './github-token';
+import minimist from "minimist";
+import getGithubToken, { getEnv } from "./github-token";
 
 const { shell, env, help, prompt } = minimist(process.argv.slice(2), {
-  alias: { shell: 's', env: 'e', help: 'h', prompt: 'p' },
+  alias: { shell: "s", env: "e", help: "h", prompt: "p" },
   default: { shell: false, env: false, help: false, prompt: false },
 });
 
 if (shell && env) {
-  console.log('--shell and --env cannot be used together.\n');
+  console.log("--shell and --env cannot be used together.\n");
   showHelp();
   process.exit(1);
 }
