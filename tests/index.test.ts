@@ -8,7 +8,7 @@ afterEach(async () => {
   mock.restore();
 });
 
-it("fromHub", async () => {
+it("fromHub", () => {
   mock({
     [join(homedir(), ".config")]: {
       hub: `github.com:
@@ -18,11 +18,11 @@ it("fromHub", async () => {
     },
   });
 
-  const token = await getGithubToken();
+  const token = getGithubToken();
   expect(token).toBe("3ZJBAhMVjdFQvQNkb");
 });
 
-it("fromGh", async () => {
+it("fromGh", () => {
   mock({
     [join(homedir(), ".config")]: {
       gh: {
@@ -38,7 +38,7 @@ it("fromGh", async () => {
     },
   });
 
-  const token = await getGithubToken();
+  const token = getGithubToken();
   expect(token).toBe("ZfJTkxcfA5DZUbPBb");
 });
 

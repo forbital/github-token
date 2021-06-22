@@ -9,7 +9,6 @@
 2. `~/.config/gh/config.yml`
 3. `GH_TOKEN`
 4. `GITHUB_TOKEN`
-5. System Keychain (macOS, Windows, Linux)
 
 [npm-version]: https://badgen.net/npm/v/@forbital/github-token
 [npm-downloads]: https://badgen.net/npm/dt/@forbital/github-token
@@ -34,6 +33,7 @@ or
 
 ```bash
 eval $(github-token --shell)
+# then
 echo $GITHUB_TOKEN
 ```
 
@@ -43,26 +43,20 @@ or
 echo "$(github-token --env)" >> .env
 ```
 
-#### direnv
+### direnv
 
 ```bash
 # .envrc
 eval $(github-token --shell)
 ```
 
-#### Create new personal access token
-
-```bash
-github-token -p
-```
-
 ### Node.js
 
 ```js
-import getToken from '@forbital/github-token';
+import getToken from "@forbital/github-token";
 
-const user = await fetch('https://api.github.com/user', {
-  headers: { Authorization: `Bearer ${await getToken()}` },
+const user = await fetch("https://api.github.com/user", {
+  headers: { Authorization: `Bearer ${getToken()}` },
 }).then((res) => res.json());
 
 console.log(user.twitter_username);

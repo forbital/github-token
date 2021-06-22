@@ -3,9 +3,9 @@
 import minimist from "minimist";
 import getGithubToken, { getEnv } from "./github-token";
 
-const { shell, env, help, prompt } = minimist(process.argv.slice(2), {
-  alias: { shell: "s", env: "e", help: "h", prompt: "p" },
-  default: { shell: false, env: false, help: false, prompt: false },
+const { shell, env, help } = minimist(process.argv.slice(2), {
+  alias: { shell: "s", env: "e", help: "h" },
+  default: { shell: false, env: false, help: false },
 });
 
 if (shell && env) {
@@ -24,16 +24,15 @@ function showHelp() {
 
  --help,   -h   show help
  --shell,  -s   print shell code to setup env var
- --env,    -e   print env var
- --prompt, -p   ask user input for the token (saved to the system keychain)`);
+ --env,    -e   print env var`);
 }
 
 async function main() {
-  const token = await (shell
+  const token = shell
     ? getEnv({ shell: true })
     : env
     ? getEnv()
-    : getGithubToken({ prompt }));
+    : getGithubToken();
   if (token) console.log(token);
 }
 
