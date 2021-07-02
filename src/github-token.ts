@@ -39,10 +39,10 @@ export function fromEnv(): string | undefined {
   return process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN;
 }
 
-export async function getEnv({
-  shell = false,
-}: { shell?: boolean } = {}): Promise<string | undefined> {
-  const token = await getGithubToken();
+export function getEnv({ shell = false }: { shell?: boolean } = {}):
+  | string
+  | undefined {
+  const token = getGithubToken();
   if (!token) return undefined;
   return ["GITHUB_TOKEN", "GH_TOKEN"]
     .map((key) => key + "=" + token)
