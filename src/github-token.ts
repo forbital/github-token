@@ -13,7 +13,7 @@ export function fromHubConfig(): string | undefined {
     const token = hubConfig?.["github.com"]?.[0]?.["oauth_token"];
     return token;
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if ((err as any)?.code === "ENOENT") {
       return undefined;
     }
     throw err;
@@ -28,7 +28,7 @@ export function fromGhConfig(): string | undefined {
     const token = hubConfig?.["hosts"]?.["github.com"]?.["oauth_token"];
     return token;
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if ((err as any)?.code === "ENOENT") {
       return undefined;
     }
     throw err;
